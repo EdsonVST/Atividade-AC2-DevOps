@@ -1,0 +1,10 @@
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\config\OpenApiConfig.java
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\controller\AlunoRestController.java
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\controller\ApiExceptionHandler.java
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\domain\Aluno.java
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\domain\Curso.java
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\dto\ConclusaoCursoRequestDTO.java
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\dto\ConclusaoCursoResponseDTO.java
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\GamificacaoApplication.java
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\repository\AlunoRepository.java
+C:\Users\jeova\Downloads\gamificacao-api-pratica5-estrutura-professora\src\main\java\com\projeto\gamificacao\service\AlunoService.java

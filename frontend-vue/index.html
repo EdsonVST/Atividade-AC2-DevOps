@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Gamificacao EAD</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f4f6f8; padding: 24px; }
+        .box { max-width: 650px; margin: auto; background: white; padding: 24px; border-radius: 10px; }
+        input, button { width: 100%; padding: 10px; margin-bottom: 10px; box-sizing: border-box; }
+        .resultado { margin-top: 20px; padding: 16px; background: #eef2f5; border-radius: 8px; }
+    </style>
+</head>
+<body>
+<div id="app" class="box">
+    <h1>Gamificacao EAD</h1>
+    <p>Conclusao de curso e liberacao de novos cursos.</p>
+
+    <input v-model="form.nomeAluno" placeholder="Nome do aluno">
+    <input v-model="form.nomeCurso" placeholder="Nome do curso">
+    <input v-model.number="form.mediaFinal" type="number" min="0" max="10" step="0.1" placeholder="Media final">
+    <button @click="processarConclusao">Processar conclusao</button>
+
+    <p>{{ mensagem }}</p>
+
+    <div v-if="resultado" class="resultado">
+        <strong>Resultado</strong>
+        <p>Aluno: {{ resultado.nomeAluno }}</p>
+        <p>Curso: {{ resultado.nomeCurso }}</p>
+        <p>Media: {{ resultado.mediaFinal }}</p>
+        <p>Cursos liberados: {{ resultado.cursosLiberados }}</p>
+    </div>
+</div>
+<script>
+const { createApp } = Vue;
+createApp({
+    data() {
+        return {
+            apiBase: 'http://localhost:8080',
+            mensagem: '',
+            resultado: null,
+            form: { nomeAluno: '', nomeCurso: '', mediaFinal: 8.0 }
+        }
+    },
+    methods: {
+        async processarConclusao() {
+            this.mensagem = '';
+            this.resultado = null;
+            try {
+                const response = await fetch(this.apiBase + '/api/alunos/conclusao', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(this.form)
+                });
+                const text = await response.text();
+                if (!response.ok) throw new Error(text || 'Erro ao processar');
+                this.resultado = JSON.parse(text);
+                this.mensagem = 'Conclusao processada com sucesso.';
+            } catch (e) {
+                this.mensagem = 'Erro: ' + e.message;
+            }
+        }
+    }
+}).mount('#app');
+</script>
+</body>
+</html>

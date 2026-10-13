@@ -1,0 +1,10 @@
+com\projeto\gamificacao\controller\AlunoRestController.class
+com\projeto\gamificacao\dto\ConclusaoCursoRequestDTO.class
+com\projeto\gamificacao\controller\ApiExceptionHandler.class
+com\projeto\gamificacao\dto\ConclusaoCursoResponseDTO.class
+com\projeto\gamificacao\domain\Aluno.class
+com\projeto\gamificacao\domain\Curso.class
+com\projeto\gamificacao\service\AlunoService.class
+com\projeto\gamificacao\repository\AlunoRepository.class
+com\projeto\gamificacao\config\OpenApiConfig.class
+com\projeto\gamificacao\GamificacaoApplication.class

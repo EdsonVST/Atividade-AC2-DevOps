@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlunoService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gamificacao-api</a> &gt; <a href="index.source.html" class="el_package">com.projeto.gamificacao.service</a> &gt; <span class="el_source">AlunoService.java</span></div><h1>AlunoService.java</h1><pre class="source lang-java linenums">package com.projeto.gamificacao.service;
+
+import com.projeto.gamificacao.domain.Aluno;
+import com.projeto.gamificacao.domain.Curso;
+import com.projeto.gamificacao.dto.ConclusaoCursoRequestDTO;
+import com.projeto.gamificacao.dto.ConclusaoCursoResponseDTO;
+import com.projeto.gamificacao.repository.AlunoRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+@Service
+public class AlunoService {
+    private final AlunoRepository repository;
+
+<span class="nc" id="L15">    public AlunoService(AlunoRepository repository) {</span>
+<span class="nc" id="L16">        this.repository = repository;</span>
+<span class="nc" id="L17">    }</span>
+
+    @Transactional
+    public ConclusaoCursoResponseDTO processarConclusao(ConclusaoCursoRequestDTO dto) {
+<span class="nc" id="L21">        Curso curso = new Curso(dto.nomeCurso());</span>
+<span class="nc" id="L22">        curso.concluir(dto.mediaFinal());</span>
+
+<span class="nc" id="L24">        Aluno aluno = new Aluno(dto.nomeAluno());</span>
+<span class="nc" id="L25">        aluno.processarConclusao(curso);</span>
+
+<span class="nc" id="L27">        Aluno salvo = repository.save(aluno);</span>
+<span class="nc" id="L28">        return toDTO(salvo);</span>
+    }
+
+    private ConclusaoCursoResponseDTO toDTO(Aluno aluno) {
+<span class="nc" id="L32">        return new ConclusaoCursoResponseDTO(</span>
+<span class="nc" id="L33">                aluno.getId(),</span>
+<span class="nc" id="L34">                aluno.getNome(),</span>
+<span class="nc" id="L35">                aluno.getUltimoCurso(),</span>
+<span class="nc" id="L36">                aluno.getUltimaMedia(),</span>
+<span class="nc" id="L37">                aluno.getCursosLiberados()</span>
+        );
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.13.202504020838</span></div></body></html>

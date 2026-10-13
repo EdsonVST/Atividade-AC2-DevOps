@@ -1,0 +1,10 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+gamificacao-api,com.projeto.gamificacao.service,AlunoService,49,0,0,0,15,0,3,0,3,0
+gamificacao-api,com.projeto.gamificacao.controller,AlunoRestController,11,0,0,0,4,0,2,0,2,0
+gamificacao-api,com.projeto.gamificacao.controller,ApiExceptionHandler,7,0,0,0,2,0,2,0,2,0
+gamificacao-api,com.projeto.gamificacao.dto,ConclusaoCursoResponseDTO,18,0,0,0,1,0,1,0,1,0
+gamificacao-api,com.projeto.gamificacao.dto,ConclusaoCursoRequestDTO,12,0,0,0,1,0,1,0,1,0
+gamificacao-api,com.projeto.gamificacao.config,OpenApiConfig,23,0,0,0,6,0,2,0,2,0
+gamificacao-api,com.projeto.gamificacao.domain,Aluno,0,43,0,2,0,16,0,9,0,8
+gamificacao-api,com.projeto.gamificacao.domain,Curso,0,16,0,0,0,7,0,4,0,4
+gamificacao-api,com.projeto.gamificacao,GamificacaoApplication,8,0,0,0,3,0,2,0,2,0
