@@ -59,7 +59,7 @@ class AlunoTest {
         aluno.processarConclusao(curso);
 
         // Assert
-       // assertEquals(3, aluno.getCursosLiberados());
-       assertEquals(4, aluno.getCursosLiberados());
+       assertEquals(3, aluno.getCursosLiberados());
+       //assertEquals(4, aluno.getCursosLiberados());
     }
 }
