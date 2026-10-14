@@ -58,6 +58,14 @@ pipeline {
         }
     }
 
+    stage('5 - CD - Docker Build') {
+        steps {
+            echo 'Iniciando build da imagem Docker da API Gamificacao'
+
+            bat '"C:\\Users\\edson\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" compose -f docker-compose.yml build app'
+        }
+    }
+
     post {
         success {
             echo 'Pipeline CI executado com sucesso!'
