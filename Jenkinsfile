@@ -7,6 +7,10 @@ pipeline {
         maven 'maven'
     }
 
+    environment {
+        PATH+NODEJS = 'C:\\Program Files\\nodejs'
+    }
+
     stages {
 
         stage('0 - Preflight do Ambiente') {
