@@ -76,6 +76,16 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- Plugin responsável pela análise estática do código Java -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.26.0</version>
+                <configuration>
+                    <targetJdk>23</targetJdk>
+                    <failOnViolation>false</failOnViolation>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
