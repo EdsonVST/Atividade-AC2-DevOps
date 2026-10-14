@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -27,8 +28,11 @@ pipeline {
             }
             post {
                 always {
-                    junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: true
-                    archiveArtifacts artifacts: 'target/site/jacoco/**', allowEmptyArchive: true
+                    junit testResults: 'target/surefire-reports/*.xml',
+                          allowEmptyResults: true
+
+                    archiveArtifacts artifacts: 'target/site/jacoco/**',
+                                     allowEmptyArchive: true
                 }
             }
         }
@@ -39,7 +43,8 @@ pipeline {
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'target/pmd.xml,target/site/pmd.html', allowEmptyArchive: true
+                    archiveArtifacts artifacts: 'target/pmd.xml,target/site/pmd.html',
+                                     allowEmptyArchive: true
                 }
             }
         }
@@ -50,7 +55,7 @@ pipeline {
             }
         }
 
-        // Novo estagio de construcao da imagem Docker
+        // Constroi a imagem Docker da aplicacao.
         stage('5 - CD - Docker Build') {
             steps {
                 echo 'Iniciando build da imagem Docker da API Gamificacao'
@@ -59,7 +64,7 @@ pipeline {
             }
         }
 
-        // Estagio responsavel por iniciar os containers da aplicacao
+        // Inicia os containers da aplicacao e do monitoramento.
         stage('6 - CD - Docker Deploy') {
             steps {
                 echo 'Iniciando deploy da API Gamificacao'
@@ -68,6 +73,23 @@ pipeline {
             }
         }
 
+        // Executa os testes automatizados da API com Cypress.
+        stage('7 - CI - Cypress E2E') {
+            steps {
+                echo 'Verificando Node.js e NPM'
+
+                bat 'node -v'
+                bat 'npm.cmd -v'
+
+                echo 'Instalando dependencias do Cypress'
+
+                bat 'npm.cmd ci'
+
+                echo 'Executando testes automatizados da API'
+
+                bat 'npx.cmd cypress run --spec "cypress/e2e/gamificacao.cy.js" --browser edge'
+            }
+        }
     }
 
     post {

@@ -1,0 +1,27 @@
+{
+  "name": "atividade-ac2-devops",
+  "version": "1.0.0",
+  "description": "GAMIFICAÇÃO PARA ENGAJAMENTO DE EDUCAÇÃO CONTINUADA",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EdsonVST/Atividade-AC2-DevOps.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/EdsonVST/Atividade-AC2-DevOps/issues"
+  },
+  "homepage": "https://github.com/EdsonVST/Atividade-AC2-DevOps#readme",
+  "devDependencies": {
+    "cypress": "^16.2.0"
+  },
+  "allowScripts": {
+    "cypress@16.2.0": true
+  }
+}

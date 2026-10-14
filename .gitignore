@@ -1,0 +1,14 @@
+# Dependencias Node.js
+node_modules/
+
+# Arquivos gerados pelo Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Arquivos gerados pelo Maven
+target/
+
+# Configuracoes locais do IntelliJ
+.idea/
+*.iml
