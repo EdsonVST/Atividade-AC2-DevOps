@@ -1,7 +1,3 @@
-// Pipeline as Code - A2 DevOps e QA
-// Projeto: API de Gamificacao
-// Etapa inicial: Integracao Continua (CI)
-
 pipeline {
     agent any
 
@@ -11,6 +7,7 @@ pipeline {
     }
 
     stages {
+
         stage('0 - Preflight do Ambiente') {
             steps {
                 bat 'java -version'
@@ -30,11 +27,8 @@ pipeline {
             }
             post {
                 always {
-                    junit testResults: 'target/surefire-reports/*.xml',
-                          allowEmptyResults: true
-
-                    archiveArtifacts artifacts: 'target/site/jacoco/**',
-                                     allowEmptyArchive: true
+                    junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: true
+                    archiveArtifacts artifacts: 'target/site/jacoco/**', allowEmptyArchive: true
                 }
             }
         }
@@ -45,8 +39,7 @@ pipeline {
             }
             post {
                 always {
-                    archiveArtifacts artifacts: 'target/pmd.xml,target/site/pmd.html',
-                                     allowEmptyArchive: true
+                    archiveArtifacts artifacts: 'target/pmd.xml,target/site/pmd.html', allowEmptyArchive: true
                 }
             }
         }
@@ -56,23 +49,24 @@ pipeline {
                 bat 'mvn -B package -DskipTests'
             }
         }
-    }
 
-    stage('5 - CD - Docker Build') {
-        steps {
-            echo 'Iniciando build da imagem Docker da API Gamificacao'
+        // Novo estagio de construcao da imagem Docker
+        stage('5 - CD - Docker Build') {
+            steps {
+                echo 'Iniciando build da imagem Docker da API Gamificacao'
 
-            bat '"C:\\Users\\edson\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" compose -f docker-compose.yml build app'
+                bat '"C:\\Users\\edson\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" compose -f docker-compose.yml build app'
+            }
         }
+
     }
 
     post {
         success {
-            echo 'Pipeline CI executado com sucesso!'
+            echo 'Pipeline CI/CD executado com sucesso!'
         }
-
         failure {
-            echo 'Falha na execucao do Pipeline CI.'
+            echo 'Falha na execucao do Pipeline CI/CD.'
         }
     }
 }
