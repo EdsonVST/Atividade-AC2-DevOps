@@ -59,6 +59,15 @@ pipeline {
             }
         }
 
+        // Estagio responsavel por iniciar os containers da aplicacao
+        stage('6 - CD - Docker Deploy') {
+            steps {
+                echo 'Iniciando deploy da API Gamificacao'
+
+                bat '"C:\\Users\\edson\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" compose -f docker-compose.yml up -d --no-build'
+            }
+        }
+
     }
 
     post {
