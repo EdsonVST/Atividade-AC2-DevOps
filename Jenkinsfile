@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        PATH+NODEJS = 'C:\\Program Files\\nodejs'
+        PATH = "C:\\Program Files\\nodejs;${env.PATH}"
     }
 
     stages {
